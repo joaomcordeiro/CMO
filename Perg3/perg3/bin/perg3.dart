@@ -1,7 +1,7 @@
-import 'package:perg3/perg3.dart' as perg3;
+import 'package:perg3/data/apolices.dart';
+import 'package:perg3/data/data_input.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${perg3.calculate()}!');
+  Apolices apolices = Apolices();
+  dataInput(apolices);
 }
-
-void
