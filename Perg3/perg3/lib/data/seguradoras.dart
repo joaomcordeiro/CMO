@@ -11,13 +11,21 @@ class Seguradoras {
     _seguradoras.add(seguradora);
   }
 
-  getSeguradorainfo() {
-    var seguradoraInfo = [];
+  String getSeguradoraName(int numberID) {
+    return _seguradoras
+        .where((element) => element.idSeguradora == (numberID))
+        .first
+        .nome
+        .toString();
+  }
+
+//devolve uma lista de objetos com informação para o dashboard
+  List<List<Object>> getSeguradorainfo() {
+    List<List<Object>> seguradoraInfo = [];
     _seguradoras.forEach((element) {
-      seguradoraInfo.add([
-        element.nome,
-        gv.apolices.getMediaValorsegurado(element.idSeguradora)
-      ]);
+      List<Object> info =
+          gv.apolices.getSeguradoraMediaValorsegurado(element.idSeguradora);
+      seguradoraInfo.add([element.nome, info[0], info[1]]);
     });
     return seguradoraInfo;
   }

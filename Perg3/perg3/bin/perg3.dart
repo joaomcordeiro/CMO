@@ -3,7 +3,7 @@ import 'package:perg3/global_variables.dart' as gv;
 
 void main(List<String> arguments) {
   dataInput();
-  var temp = gv.seguradoras.getSeguradorainfo();
+
   menuPrincipal();
 
 //  apolices.foreach((s){
@@ -35,8 +35,8 @@ void menuPrincipal() {
     ..borderType = BorderType.vertical
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
-  String? option = stdin.readLineSync();
-  print(table);
+  // String? option = stdin.readLineSync();
+  String? option = "3";
   switch (option) {
     case "1":
       {
@@ -46,19 +46,13 @@ void menuPrincipal() {
 
     case "2":
       {
-        // print(numeros.length - 1);
+        relatorioApolices();
       }
       break;
 
     case "3":
       {
-        // for (var i = 0; i <= r; i++) {
-        //   if (isPrime(numeros[i])) {
-        //     primos.add(i);
-        //   } else {}
-        // }
-        // primos.sort((b, a) => a.compareTo(b));
-        // print(primos);
+        relatorioEntidades();
       }
       break;
 

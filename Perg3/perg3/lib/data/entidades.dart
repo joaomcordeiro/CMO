@@ -13,21 +13,21 @@ class Entidades {
 
   String getEntidadeNome(number) {
     return _entidades
-        .where((element) => element.idEntidade == (number - 1))
+        .where((element) => element.idEntidade == (number))
         .first
         .nome;
   }
 
   int getEntidadeIdade(number) {
     return _entidades
-        .where((element) => element.idEntidade == (number - 1))
+        .where((element) => element.idEntidade == (number))
         .first
         .idade;
   }
 
   String getEntidadeMorada(number) {
     return _entidades
-        .where((element) => element.idEntidade == (number - 1))
+        .where((element) => element.idEntidade == (number))
         .first
         .morada;
   }

@@ -1,7 +1,7 @@
 class Apolice {
   int id_apolice;
   int id_seguradora;
-  int tomador;
+  int id_tomador;
   int id_segurado;
   int id_tipoSeguro;
   double valorSegurado;
@@ -16,7 +16,7 @@ class Apolice {
       this.id_tipoSeguro,
       this.periodicidadePag,
       this.status,
-      this.tomador,
+      this.id_tomador,
       this.valorPremio,
       this.valorSegurado);
 }

@@ -1,6 +1,6 @@
-class TipoSeguros {
+class TipoSeguro {
   int idTipoSeguro;
-  int tipo;
+  String tipo;
 
-  TipoSeguros(this.idTipoSeguro, this.tipo);
+  TipoSeguro(this.idTipoSeguro, this.tipo);
 }
