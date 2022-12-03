@@ -29,6 +29,7 @@ void dataInput() {
   gv.seguradoras.add(Seguradora(2, "AGS"));
   gv.seguradoras.add(Seguradora(3, "Fidelidade"));
   gv.seguradoras.add(Seguradora(4, "AGEAS"));
+  gv.seguradoras.add(Seguradora(5, "AGEAS"));
   gv.tiposSeguro.add(TipoSeguro(1, "Vida"));
   gv.tiposSeguro.add(TipoSeguro(2, "Acidentes pessoais"));
   gv.tiposSeguro.add(TipoSeguro(3, "Saúde"));

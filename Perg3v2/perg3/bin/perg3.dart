@@ -1,8 +1,6 @@
 import 'package:perg3/lib.dart';
 import 'package:perg3/global_variables.dart' as gv;
 
-import '../lib/manutencao.dart';
-
 void main(List<String> arguments) {
   dataInput();
 
@@ -38,8 +36,9 @@ void menuPrincipal() {
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
   // String? option = stdin.readLineSync();
-  String? option = "3";
-  switch (option) {
+  // var option = gv.console.readKey();
+  String? option = "4";
+  switch (option.toString()) {
     case "1":
       {
         dashboard();
@@ -60,34 +59,7 @@ void menuPrincipal() {
 
     case "4":
       {
-        //
-        print("1 - Adição");
-        print("2 - Edição");
-        print("3 - Eliminação");
-        switch (option) {
-          case "1":
-            {
-              adicao();
-            }
-            break;
-
-          case "2":
-            {
-              edicao();
-            }
-            break;
-
-          case "3":
-            {
-              eliminacao();
-            }
-            break;
-          default:
-            {
-              print("Opção Inválida!");
-            }
-        }
-        //
+        menuManutencao();
       }
       break;
     case "5":

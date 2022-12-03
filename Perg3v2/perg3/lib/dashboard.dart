@@ -2,6 +2,7 @@ import 'package:perg3/global_variables.dart' as gv;
 import 'package:dart_console/dart_console.dart';
 
 void dashboard() {
+  gv.console.clearScreen();
   gv.console.setBackgroundColor(ConsoleColor.blue);
   gv.console.setForegroundColor(ConsoleColor.white);
   gv.console.clearScreen;
