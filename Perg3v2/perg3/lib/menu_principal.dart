@@ -25,8 +25,8 @@ void menuPrincipal() {
     ..borderType = BorderType.vertical;
   // ..headerStyle = FontStyle.bold;
   gv.console.write(table);
-  // var option = gv.console.readKey();
-  String? option = "4";
+  var option = gv.console.readKey();
+  // String? option = "4";
   switch (option.toString()) {
     case "1":
       {
@@ -59,6 +59,8 @@ void menuPrincipal() {
     default:
       {
         print("Opção Inválida!");
+        sleep(const Duration(seconds: 1));
+        menuPrincipal();
       }
       break;
   }

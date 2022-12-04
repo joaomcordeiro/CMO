@@ -26,8 +26,8 @@ void menuManutencao() {
     ..borderType = BorderType.vertical
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
-  // var optionMenuManutencao = gv.console.readKey();
-  String? optionMenuManutencao = "1";
+  var optionMenuManutencao = gv.console.readKey();
+  // String? optionMenuManutencao = "5";
   switch (optionMenuManutencao.toString()) {
     case "1":
       {

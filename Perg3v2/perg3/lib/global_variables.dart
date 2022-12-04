@@ -12,21 +12,6 @@ Entidades entidades = Entidades();
 Seguradoras seguradoras = Seguradoras();
 TiposSeguro tiposSeguro = TiposSeguro();
 
-void setForeBackgroundRedBlack() {
-  console.setForegroundColor(ConsoleColor.red);
-  console.setBackgroundColor(ConsoleColor.black);
-}
-
-void setForeBackgroundWhitBlue() {
-  console.setForegroundColor(ConsoleColor.white);
-  console.setBackgroundColor(ConsoleColor.blue);
-}
-
-void setForeBackgroundWhiteGreen() {
-  console.setForegroundColor(ConsoleColor.brightWhite);
-  console.setBackgroundColor(ConsoleColor.brightCyan);
-}
-
 void setTableColors() {
   console.setForegroundColor(ConsoleColor.brightWhite);
   console.setBackgroundColor(ConsoleColor.brightCyan);
@@ -40,4 +25,9 @@ void setPageTitleColors() {
 void setOptionsColors() {
   console.setForegroundColor(ConsoleColor.brightYellow);
   console.setBackgroundColor(ConsoleColor.blue);
+}
+
+void setWarningColors() {
+  console.setForegroundColor(ConsoleColor.red);
+  console.setBackgroundColor(ConsoleColor.black);
 }

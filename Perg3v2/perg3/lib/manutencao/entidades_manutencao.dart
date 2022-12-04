@@ -4,40 +4,49 @@ import 'package:perg3/models/entidade_class.dart';
 
 void entidadesManutencao() {
   printEntidadesListOptions();
+  try {
+    var option = gv.console.readKey();
 
-  var option = gv.console.readKey();
+    // String? option = "2";
+    switch (option.toString()) {
+      case "1":
+        {
+          inserirEntidade();
+          entidadesManutencao();
+        }
+        break;
 
-  // String? option = "2";
-  switch (option.toString()) {
-    case "1":
-      {
-        inserirEntidade();
-        entidadesManutencao();
-      }
-      break;
+      case "2":
+        {
+          editarEntidade();
+          entidadesManutencao();
+        }
+        break;
 
-    case "2":
-      {
-        editarEntidade();
-        entidadesManutencao();
-      }
-      break;
-
-    case "3":
-      {
-        eliminarEntidade();
-        entidadesManutencao();
-      }
-      break;
-    case "4":
-      {
-        menuManutencao();
-      }
-      break;
-    default:
-      {
-        print("Opção Inválida!");
-      }
+      case "3":
+        {
+          eliminarEntidade();
+          entidadesManutencao();
+        }
+        break;
+      case "4":
+        {
+          menuManutencao();
+        }
+        break;
+      default:
+        {
+          print("Opção Inválida!");
+          gv.console.resetColorAttributes();
+          entidadesManutencao();
+        }
+    }
+  } on FormatException catch (e) {
+    gv.setWarningColors();
+    gv.console.writeLine("A opção tem que ser um número", TextAlignment.left);
+    gv.console.resetColorAttributes();
+    sleep(const Duration(seconds: 2));
+    entidadesManutencao();
   }
 }
 
@@ -47,7 +56,6 @@ void printEntidadesList(String titulo) {
     opcoes
         .add([element.idEntidade, element.nome, element.idade, element.morada]);
   });
-  gv.console.clearScreen();
   gv.setPageTitleColors();
   gv.console.setTextStyle(bold: true);
   gv.console.writeLine(titulo, TextAlignment.center);
@@ -97,14 +105,14 @@ void inserirEntidade() {
     novaEntidade.idEntidade = gv.entidades.list.length + 1;
     gv.entidades.add(novaEntidade);
   } on EntidadeCampoVazio catch (e) {
-    gv.setForeBackgroundRedBlack();
+    gv.setWarningColors();
     gv.console.writeLine(e.errorMessage(), TextAlignment.left);
     sleep(const Duration(seconds: 2));
-    gv.setForeBackgroundWhitBlue();
+    gv.console.resetColorAttributes();
   } on FormatException catch (e) {
-    gv.setForeBackgroundRedBlack();
+    gv.setWarningColors();
     gv.console.writeLine("A idade tem que ser um número", TextAlignment.left);
-    gv.setForeBackgroundWhitBlue();
+    gv.console.resetColorAttributes();
     sleep(const Duration(seconds: 2));
   } on Exception catch (e) {
     gv.console.writeLine(e, TextAlignment.left);
@@ -120,9 +128,18 @@ void editarEntidade() {
       int numIdEntidade = int.parse(idEntidade);
       Entidade alteraEntidade = Entidade(
           numIdEntidade,
-          gv.entidades.list.elementAt(numIdEntidade - 1).nome,
-          gv.entidades.list.elementAt(numIdEntidade - 1).idade,
-          gv.entidades.list.elementAt(numIdEntidade - 1).morada);
+          gv.entidades.list
+              .where((element) => element.idEntidade == int.parse(idEntidade))
+              .first
+              .nome,
+          gv.entidades.list
+              .where((element) => element.idEntidade == int.parse(idEntidade))
+              .first
+              .idade,
+          gv.entidades.list
+              .where((element) => element.idEntidade == int.parse(idEntidade))
+              .first
+              .morada);
       gv.console.writeLine(
           'Introduza o nome que subsituirá ${alteraEntidade.nome}: (<Enter> para não alterar)',
           TextAlignment.left);
@@ -153,9 +170,9 @@ void editarEntidade() {
       gv.entidades.setEntidade(numIdEntidade, alteraEntidade);
     }
   } on FormatException catch (e) {
-    gv.setForeBackgroundRedBlack();
+    gv.setWarningColors();
     gv.console.writeLine("A idade tem que ser um número", TextAlignment.left);
-    gv.setForeBackgroundWhitBlue();
+    gv.console.resetColorAttributes();
     sleep(const Duration(seconds: 2));
   } on Exception catch (e) {
     gv.console.writeLine(e, TextAlignment.left);
@@ -169,9 +186,9 @@ void eliminarEntidade() {
   if (idEntidade != null && idEntidade.isNotEmpty) {
     try {
       gv.entidades.deleteEntidade(int.parse(idEntidade));
+      gv.console.resetColorAttributes();
     } on DadosComRegistosNasApolices catch (e) {
-      gv.console.setForegroundColor(ConsoleColor.red);
-      gv.console.setBackgroundColor(ConsoleColor.black);
+      gv.setWarningColors();
       gv.console.writeLine(e.errorMessage(), TextAlignment.left);
       sleep(const Duration(seconds: 2));
       gv.console.setForegroundColor(ConsoleColor.white);

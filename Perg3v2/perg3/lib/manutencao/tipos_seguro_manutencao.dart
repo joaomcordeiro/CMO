@@ -4,40 +4,50 @@ import 'package:perg3/models/tipo_seguro_class.dart';
 
 void tiposSeguroManutencao() {
   printTiposSeguroListOptions();
-  var option = gv.console.readKey();
+  try {
+    var option = gv.console.readKey();
 
-  // String? option = "2";
-  switch (option.toString()) {
-    case "1":
-      {
-        inserirTiposSeguro();
-        tiposSeguroManutencao();
-      }
-      break;
+    // String? option = "2";
+    switch (option.toString()) {
+      case "1":
+        {
+          inserirTiposSeguro();
+          tiposSeguroManutencao();
+        }
+        break;
 
-    case "2":
-      {
-        editarTiposSeguro();
-        tiposSeguroManutencao();
-      }
-      break;
+      case "2":
+        {
+          editarTiposSeguro();
+          tiposSeguroManutencao();
+        }
+        break;
 
-    case "3":
-      {
-        eliminarTiposSeguro();
-        tiposSeguroManutencao();
-      }
-      break;
-    case "4":
-      {
-        menuManutencao();
-      }
-      break;
+      case "3":
+        {
+          eliminarTiposSeguro();
+          tiposSeguroManutencao();
+        }
+        break;
+      case "4":
+        {
+          menuManutencao();
+        }
+        break;
 
-    default:
-      {
-        print("Opção Inválida!");
-      }
+      default:
+        {
+          print("Opção Inválida!");
+          gv.console.resetColorAttributes();
+          tiposSeguroManutencao();
+        }
+    }
+  } on FormatException catch (e) {
+    gv.setWarningColors();
+    gv.console.writeLine("A opção tem que ser um número", TextAlignment.left);
+    gv.console.resetColorAttributes();
+    sleep(const Duration(seconds: 2));
+    tiposSeguroManutencao();
   }
 }
 
@@ -46,7 +56,6 @@ void printTiposSeguroList(String titulo) {
   gv.tiposSeguro.list.forEach((element) {
     opcoes.add([element.idTipoSeguro, element.tipo]);
   });
-  gv.console.clearScreen();
   gv.setPageTitleColors();
   gv.console.setTextStyle(bold: true);
   gv.console.writeLine(titulo, TextAlignment.center);
@@ -106,6 +115,7 @@ void eliminarTiposSeguro() {
   if (idtipo != null && idtipo.isNotEmpty) {
     try {
       gv.tiposSeguro.deleteTipoSeguro(int.parse(idtipo));
+      gv.console.resetColorAttributes();
     } on DadosComRegistosNasApolices catch (e) {
       gv.console.setForegroundColor(ConsoleColor.red);
       gv.console.setBackgroundColor(ConsoleColor.black);
@@ -114,6 +124,5 @@ void eliminarTiposSeguro() {
       gv.console.setForegroundColor(ConsoleColor.white);
       gv.console.setBackgroundColor(ConsoleColor.black);
     }
-    ;
   }
 }

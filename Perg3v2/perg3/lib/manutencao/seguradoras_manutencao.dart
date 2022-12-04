@@ -4,39 +4,49 @@ import 'package:perg3/models/seguradora_class.dart';
 
 void seguradorasManutencao() {
   printSeguradorasListOptions();
-  var option = gv.console.readKey();
+  try {
+    var option = gv.console.readKey();
 
-  // String? option = "2";
-  switch (option.toString()) {
-    case "1":
-      {
-        inserirSeguradora();
-        seguradorasManutencao();
-      }
-      break;
+    // String? option = "2";
+    switch (option.toString()) {
+      case "1":
+        {
+          inserirSeguradora();
+          seguradorasManutencao();
+        }
+        break;
 
-    case "2":
-      {
-        editarSeguradora();
-        seguradorasManutencao();
-      }
-      break;
+      case "2":
+        {
+          editarSeguradora();
+          seguradorasManutencao();
+        }
+        break;
 
-    case "3":
-      {
-        eliminarSeguradora();
-        seguradorasManutencao();
-      }
-      break;
-    case "4":
-      {
-        menuManutencao();
-      }
-      break;
-    default:
-      {
-        print("Opção Inválida!");
-      }
+      case "3":
+        {
+          eliminarSeguradora();
+          seguradorasManutencao();
+        }
+        break;
+      case "4":
+        {
+          menuManutencao();
+        }
+        break;
+      default:
+        {
+          print("Opção Inválida!");
+          gv.console.resetColorAttributes();
+          seguradorasManutencao();
+        }
+    }
+  } on FormatException catch (e) {
+    gv.setWarningColors();
+    gv.console.writeLine("A opção tem que ser um número", TextAlignment.left);
+    gv.console.resetColorAttributes();
+    sleep(const Duration(seconds: 2));
+    seguradorasManutencao();
   }
 }
 
@@ -45,7 +55,6 @@ void printSeguradorasList(String titulo) {
   gv.seguradoras.list.forEach((element) {
     opcoes.add([element.idSeguradora, element.nome]);
   });
-  gv.console.clearScreen();
   gv.setPageTitleColors();
   gv.console.setTextStyle(bold: true);
   gv.console.writeLine(titulo, TextAlignment.center);
@@ -106,12 +115,13 @@ void eliminarSeguradora() {
   if (idSeguradora != null && idSeguradora.isNotEmpty) {
     try {
       gv.seguradoras.deleteSeguradora(int.parse(idSeguradora));
+      gv.console.resetColorAttributes();
     } on DadosComRegistosNasApolices catch (e) {
       gv.console.setForegroundColor(ConsoleColor.red);
       gv.console.setBackgroundColor(ConsoleColor.black);
       gv.console.writeLine(e.errorMessage(), TextAlignment.left);
-      gv.console.setForegroundColor(ConsoleColor.white);
-      gv.console.setBackgroundColor(ConsoleColor.black);
+      sleep(const Duration(seconds: 2));
+      gv.console.resetColorAttributes();
     }
     ;
   }

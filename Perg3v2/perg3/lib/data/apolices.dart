@@ -1,3 +1,4 @@
+import 'package:perg3/exceptions/dados_com_registos_nas_apolices.dart';
 import '../models/apolice_class.dart';
 import 'package:perg3/global_variables.dart' as gv;
 
@@ -97,5 +98,22 @@ class Apolices {
       }
     });
     return info;
+  }
+
+// Utilizado na edição da lista de apolices
+  void setApolice(int apoliceID, Apolice alteraApolice) {
+    _apolices.removeWhere((element) => element.id_apolice == apoliceID);
+    gv.apolices.add(alteraApolice);
+    _apolices.sort((a, b) => a.id_apolice.compareTo(b.id_apolice));
+  }
+
+  void deleteApolice(int apoliceID) {
+    //you cannot delete a Entidade if is it used in Apolices
+    // gv.apolices.list.where((element) => element.id_tipoSeguro == numberID);
+    if (gv.apolices.list.any((element) => element.id_tipoSeguro == apoliceID)) {
+      throw DadosComRegistosNasApolices(apoliceID.toString(), "A Apólice");
+    }
+    _apolices.removeWhere((element) => element.id_apolice == apoliceID);
+    _apolices.sort((a, b) => a.id_apolice.compareTo(b.id_apolice));
   }
 }
