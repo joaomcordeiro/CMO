@@ -19,4 +19,15 @@ class Apolice {
       this.id_tomador,
       this.valorPremio,
       this.valorSegurado);
+
+  Apolice.vazio()
+      : id_apolice = 0,
+        id_segurado = 0,
+        id_seguradora = 0,
+        id_tipoSeguro = 0,
+        periodicidadePag = 0,
+        status = 0,
+        id_tomador = 0,
+        valorPremio = 0,
+        valorSegurado = 0;
 }

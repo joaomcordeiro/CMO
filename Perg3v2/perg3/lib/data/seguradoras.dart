@@ -49,6 +49,6 @@ class Seguradoras {
     if (gv.apolices.list.any((element) => element.id_seguradora == numberID)) {
       throw DadosComRegistosNasApolices(numberID.toString(), "A Seguradora");
     }
-    _seguradoras.removeAt(numberID - 1);
+    _seguradoras.removeWhere((element) => element.idSeguradora == numberID);
   }
 }

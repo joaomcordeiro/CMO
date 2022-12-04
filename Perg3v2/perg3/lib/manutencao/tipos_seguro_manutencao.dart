@@ -3,7 +3,7 @@ import 'package:perg3/global_variables.dart' as gv;
 import 'package:perg3/models/tipo_seguro_class.dart';
 
 void tiposSeguroManutencao() {
-  printTiposSeguroList();
+  printTiposSeguroListOptions();
   var option = gv.console.readKey();
 
   // String? option = "2";
@@ -30,8 +30,9 @@ void tiposSeguroManutencao() {
       break;
     case "4":
       {
-        break;
+        menuManutencao();
       }
+      break;
 
     default:
       {
@@ -40,29 +41,34 @@ void tiposSeguroManutencao() {
   }
 }
 
-void printTiposSeguroList() {
-  gv.console.clearScreen();
-  List<TipoSeguro> temp = gv.tiposSeguro.list;
+void printTiposSeguroList(String titulo) {
   List<List<Object>> opcoes = [];
-  temp.forEach((element) {
+  gv.tiposSeguro.list.forEach((element) {
     opcoes.add([element.idTipoSeguro, element.tipo]);
   });
-  gv.console.setBackgroundColor(ConsoleColor.blue);
-  gv.console.setForegroundColor(ConsoleColor.white);
-  gv.console.clearScreen;
-  gv.console.writeLine('Manutenção Tipos de Seguro', TextAlignment.center);
+  gv.console.clearScreen();
+  gv.setPageTitleColors();
+  gv.console.setTextStyle(bold: true);
+  gv.console.writeLine(titulo, TextAlignment.center);
+  gv.console.resetColorAttributes();
+  gv.console.writeLine('', TextAlignment.center);
+  gv.setTableColors();
   final table = Table()
-    ..insertColumn(header: 'Opção', alignment: TextAlignment.center)
+    ..headerColor = ConsoleColor.yellow
+    ..insertColumn(header: 'ID', alignment: TextAlignment.center)
     ..insertColumn(header: 'Tipo de Seguro', alignment: TextAlignment.left)
     ..insertRows(opcoes)
     ..borderStyle = BorderStyle.rounded
-    ..borderColor = ConsoleColor.brightBlue
+    ..borderColor = ConsoleColor.cyan
     ..borderType = BorderType.vertical
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
-  gv.console.setBackgroundColor(ConsoleColor.blue);
-  gv.console.setForegroundColor(ConsoleColor.yellow);
-  gv.console.clearScreen;
+}
+
+void printTiposSeguroListOptions() {
+  gv.console.clearScreen();
+  printTiposSeguroList('Manutenção Tipos de Seguro');
+  gv.setOptionsColors();
   gv.console.writeLine(
       '1 - Inserir   |  2 - Editar   |   3 - Eliminar   |   4 - Voltar',
       TextAlignment.center);

@@ -14,7 +14,7 @@ void dataInput() {
   gv.apolices.add(Apolice(7, 5, 3, 3, 3, 0, 5, 478, 36000));
   gv.apolices.add(Apolice(8, 4, 4, 4, 12, 1, 2, 784, 44000));
   gv.apolices.add(Apolice(9, 2, 3, 2, 6, 1, 4, 125, 30000));
-  gv.apolices.add(Apolice(4, 4, 4, 4, 12, 1, 4, 650, 45000));
+  gv.apolices.add(Apolice(10, 4, 4, 4, 12, 1, 4, 650, 45000));
   gv.entidades.add(Entidade(1, "André Filipe Costa Silva", 26,
       "Rua dos Calores, 354 - 4435 Rio Tinto"));
   gv.entidades.add(Entidade(2, "Maria José Rocha", 31,
@@ -29,7 +29,6 @@ void dataInput() {
   gv.seguradoras.add(Seguradora(2, "AGS"));
   gv.seguradoras.add(Seguradora(3, "Fidelidade"));
   gv.seguradoras.add(Seguradora(4, "AGEAS"));
-  gv.seguradoras.add(Seguradora(5, "AGEAS"));
   gv.tiposSeguro.add(TipoSeguro(1, "Vida"));
   gv.tiposSeguro.add(TipoSeguro(2, "Acidentes pessoais"));
   gv.tiposSeguro.add(TipoSeguro(3, "Saúde"));

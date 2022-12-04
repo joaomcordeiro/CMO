@@ -63,6 +63,6 @@ class TiposSeguro {
       throw DadosComRegistosNasApolices(
           numberID.toString(), "O Tipo de Seguro");
     }
-    _tiposSeguro.removeAt(numberID - 1);
+    _tiposSeguro.removeWhere((element) => element.idTipoSeguro == numberID);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:perg3/global_variables.dart' as gv;
+import 'package:perg3/menu_principal.dart';
 import 'package:dart_console/dart_console.dart';
 
 void relatorioApolices() {
@@ -12,15 +13,15 @@ void relatorioApolices() {
     ["", "", "Total:", soma],
   ];
 
-  gv.console.setBackgroundColor(ConsoleColor.blue);
-  gv.console.setForegroundColor(ConsoleColor.white);
-  gv.console.clearScreen;
+  gv.console.clearScreen();
+  gv.setPageTitleColors();
   gv.console.writeLine('Relatório de Apólices ', TextAlignment.center);
-  // var info = [
-  //   ["Apólices Ativas", gv.apolices.getNumApolicesAtivas()],
-  //   ["Apólices Inativas", gv.apolices.getNumApolicesInativas()]
-  // ];
+  gv.console.resetColorAttributes();
+  gv.console.writeLine('', TextAlignment.center);
+  gv.setTableColors();
   final table = Table()
+    ..headerColor = ConsoleColor.yellow
+    ..headerStyle = FontStyle.bold
     ..insertColumn(header: 'Tipo de Seguro', alignment: TextAlignment.left)
     ..insertColumn(header: 'Seguradora', alignment: TextAlignment.left)
     ..insertColumn(header: 'Nº Apólice', alignment: TextAlignment.left)
@@ -29,8 +30,12 @@ void relatorioApolices() {
     ..insertRows(info)
     ..insertRows(total)
     ..borderStyle = BorderStyle.rounded
-    ..borderColor = ConsoleColor.brightBlue
+    ..borderColor = ConsoleColor.cyan
     ..borderType = BorderType.vertical
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
+  gv.console.writeLine('Escolha qualquer tecla para voltar ao menu principal',
+      TextAlignment.left);
+  var voidOption = gv.console.readKey();
+  menuPrincipal();
 }

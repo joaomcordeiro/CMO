@@ -3,7 +3,7 @@ import 'package:perg3/global_variables.dart' as gv;
 import 'package:perg3/models/seguradora_class.dart';
 
 void seguradorasManutencao() {
-  printSeguradorasList();
+  printSeguradorasListOptions();
   var option = gv.console.readKey();
 
   // String? option = "2";
@@ -30,9 +30,9 @@ void seguradorasManutencao() {
       break;
     case "4":
       {
-        break;
+        menuManutencao();
       }
-
+      break;
     default:
       {
         print("Opção Inválida!");
@@ -40,19 +40,21 @@ void seguradorasManutencao() {
   }
 }
 
-void printSeguradorasList() {
-  gv.console.clearScreen();
-  List<Seguradora> temp = gv.seguradoras.list;
+void printSeguradorasList(String titulo) {
   List<List<Object>> opcoes = [];
-  temp.forEach((element) {
+  gv.seguradoras.list.forEach((element) {
     opcoes.add([element.idSeguradora, element.nome]);
   });
-  gv.console.setBackgroundColor(ConsoleColor.blue);
-  gv.console.setForegroundColor(ConsoleColor.white);
-  gv.console.clearScreen;
-  gv.console.writeLine('Manutenção Seguradoras', TextAlignment.center);
+  gv.console.clearScreen();
+  gv.setPageTitleColors();
+  gv.console.setTextStyle(bold: true);
+  gv.console.writeLine(titulo, TextAlignment.center);
+  gv.console.resetColorAttributes();
+  gv.console.writeLine('', TextAlignment.center);
+  gv.setTableColors();
   final table = Table()
-    ..insertColumn(header: 'Opção', alignment: TextAlignment.center)
+    ..headerColor = ConsoleColor.yellow
+    ..insertColumn(header: 'ID', alignment: TextAlignment.center)
     ..insertColumn(header: 'Seguradora', alignment: TextAlignment.left)
     ..insertRows(opcoes)
     ..borderStyle = BorderStyle.rounded
@@ -60,9 +62,12 @@ void printSeguradorasList() {
     ..borderType = BorderType.vertical
     ..headerStyle = FontStyle.bold;
   gv.console.write(table);
-  gv.console.setBackgroundColor(ConsoleColor.blue);
-  gv.console.setForegroundColor(ConsoleColor.yellow);
-  gv.console.clearScreen;
+}
+
+void printSeguradorasListOptions() {
+  gv.console.clearScreen();
+  printSeguradorasList('Manutenção Seguradoras');
+  gv.setOptionsColors();
   gv.console.writeLine(
       '1 - Inserir   |  2 - Editar   |   3 - Eliminar   |   4 - Voltar',
       TextAlignment.center);

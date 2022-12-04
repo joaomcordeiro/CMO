@@ -1,16 +1,20 @@
 library lib;
 
 export 'dart:io';
+export 'package:perg3/menu_principal.dart';
 export 'package:perg3/data/apolices.dart';
 export 'package:perg3/data/entidades.dart';
 export 'package:perg3/data/seguradoras.dart';
 export 'package:perg3/data/data_input.dart';
-export 'package:perg3/dashboard.dart';
-export 'package:perg3/relatorio_apolices.dart';
-export 'package:perg3/relatorio_entidades.dart';
+export 'package:perg3/relatorios/dashboard.dart';
+export 'package:perg3/relatorios/relatorio_apolices.dart';
+export 'package:perg3/relatorios/relatorio_entidades.dart';
 export 'package:dart_console/dart_console.dart';
-export 'package:perg3/manutencao.dart';
-export 'package:perg3/seguradoras_manutencao.dart';
-export 'package:perg3/tipos_seguro_manutencao.dart';
+export 'package:perg3/manutencao/manutencao.dart';
+export 'package:perg3/manutencao/apolices_manutencao.dart';
+export 'package:perg3/manutencao/entidades_manutencao.dart';
+export 'package:perg3/manutencao/seguradoras_manutencao.dart';
+export 'package:perg3/manutencao/tipos_seguro_manutencao.dart';
 export 'package:string_scanner/string_scanner.dart';
 export 'package:perg3/exceptions/dados_com_registos_nas_apolices.dart';
+export 'package:perg3/exceptions/entidades_exceptions.dart';
