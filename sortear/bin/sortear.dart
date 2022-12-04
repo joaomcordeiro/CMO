@@ -44,7 +44,7 @@ void main() {
 
     case "C":
       {
-        //verifica os numeros que sao pares e os que sao impares e coloca numa lista
+        //distingue os numeros que sao pares dos que não são e coloca-os em listas separadas
         for (final i in numeros) {
           if (i.isEven) {
             pares.add(i);
