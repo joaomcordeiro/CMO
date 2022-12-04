@@ -72,13 +72,3 @@ void main() {
       break;
   }
 }
-
-// método de identificação de números primos
-bool isPrime(n) {
-  for (var i = 2; i <= n / i; ++i) {
-    if (n % i == 0) {
-      return false;
-    }
-  }
-  return true;
-}
